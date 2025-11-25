@@ -12,18 +12,18 @@ The Rubik's Cube is a popular 6-sided twisty puzzle first invented in the 1974 b
 
 Official Rubik's Cube competitions are governed by the World Cube Association (WCA), an entirely volunteer run non-profit organization that was founded in 2004. More than 273,000 people have competed in WCA sanctioned competitions. Competitions are held every week worldwide, but the geographic distribution of competition certainly isn't even. The United States has had over 2,000 cube competitions while other countries have had less than 10 or even none.     
 
-My project aims to determine the relationship between the density of competitions in a given country and the speed of a country's competitors. I have 2 main research questions: How are World Cube Association competitions geographically distributed? Is the density of WCA competitions correlated to the speed of the competitors in the region?
+My project aims to determine the relationship between the density of competitions in a given country and the speed of a country's competitors. I have 2 main research questions: How are World Cube Association competitions geographically distributed? Is the density of WCA competitions correlated to the speed of the competitors in the region?  ## Are there any formal/informal elements that may affect these competitions? Clubs, training etc?  (AV)
 
 
 # Materials and methods
 
-My research questions will be answered with the WCA Results Export. This is a massive dataset that is updated every week. It contains data about each competitor, the number of competitions attended, results and rankings, citizenship, gender, records, and world championship podiums. It also includes information about every competition: location, the number of competitors, what events were held, podium finishers.
+My research questions will be answered with the WCA Results Export. This is a massive dataset that is updated every week. It contains data about each competitor, the number of competitions attended, results and rankings, citizenship, gender, records, and world championship podiums. It also includes information about every competition: location, the number of competitors, what events were held, podium finishers. 
 
-There are many metrics to determine 3x3 speed. The WCA records the competitors' single and average when they compete. The 'single' is the fastest single attempt for the puzzle. The average is done taken after 5 solves, with the arithmetic mean taken after the slowest and fastest times are removed. Speedcubers acknowledge that good singles may be achieved with luck, while fast averages require more skill. 
+There are many metrics to determine 3x3 speed. The WCA records the competitors' single and average when they compete. The 'single' is the fastest single attempt for the puzzle. The average is done taken after 5 solves, with the arithmetic mean taken after the slowest and fastest times are removed. Speedcubers acknowledge that good singles may be achieved with luck, while fast averages require more skill. ## Makes sense - (AV)
 
 3x3 Speed for each country will be determined with 3 variables:
 
-1.  Mean of the top 25 3x3 averages
+1.  Mean of the top 25 3x3 averages ## Why top 25? Why not more? (AV)
 2.  Number of 3x3 Podiums at World Championships
 3.  Number of 3x3 average world records
 
@@ -42,7 +42,7 @@ library(htmlwidgets)
 library(widgetframe)
 library(sf)
 library(maps)
-library(sfhotspot)
+library(sfhotspot) ## I'd be interested to know more about this when you talk about your final (AV)
 library(dplyr)
 library(ggplot2)
 library(rnaturalearth)
@@ -116,6 +116,8 @@ ggplot(count_data) +
   theme_minimal() +
   labs(title = "WCA Competitions per Country", fill = "Count")
 
+#are there issues with sizing (ie: are there elements in a map for the USA that don't correlate well to europe or asia in terms of geographical size? (AV)
+
 #table of countries with the most competitions
 top_countries <- count_data %>%
   select(count, countryId) %>% 
@@ -140,7 +142,7 @@ competitions_sf_utm <- st_as_sf(
 
 competitions_kde <- hotspot_kde(competitions_sf_utm)
 
-plot(competitions_kde["kde"])
+plot(competitions_kde["kde"]) 
 ```
 
 # Results
